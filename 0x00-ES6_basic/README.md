@@ -1,1 +1,1 @@
-HERE we go in the first step in Alx-Backend journey
+HERE we go in the first step in ES6
