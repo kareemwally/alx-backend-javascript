@@ -8,14 +8,14 @@ interface Student {
 const student1: Student = {
   firstName: 'aly',
   lastName: 'mahmoud',
-  age: '20',
+  age: 20,
   location: 'Egypt',
 }
 
 const student2: Student = {
   firstName: 'ahmed',
   lastName: 'galal',
-  age: '22',
+  age: 22,
   location: 'Egypt',
 }
 const studentsList = [student1, student2];
