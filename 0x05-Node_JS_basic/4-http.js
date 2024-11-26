@@ -8,3 +8,5 @@ const app = http.createServer((req, res) => {
 app.listen(1245, '127.0.0.1', () => {
   console.log('...');
 });
+
+module.exports = app;
