@@ -1,5 +1,7 @@
 import { expect } from 'chai';
 import calculateNumber from './2-calcul_chai.js';
+//const calculateNumber = require('./2-calcul_chai.cjs');
+//const expect = require('chai').expect;
 
 describe('calculator', function() {
   describe('SUM', function() {
@@ -11,7 +13,7 @@ describe('calculator', function() {
       expect(calculateNumber('SUM', 5.6, -7.4)).to.equal(-1);
     });
 
-    it('the result must be 6', function() {
+    it('the result must be 6', function() {  
       expect(calculateNumber('SUM', 5.4, 0.5)).to.equal(6);
     });
 
@@ -19,6 +21,7 @@ describe('calculator', function() {
       expect(calculateNumber('SUM', 0, 0)).to.equal(0);
     });
   });
+
   describe('SUBTRACT', function() {
     it('the result must be 2', function() {
       expect(calculateNumber('SUBTRACT', 5.6, 3.9)).to.equal(2);
@@ -44,6 +47,7 @@ describe('calculator', function() {
       expect(calculateNumber('SUBTRACT', 0, 0)).to.equal(0);
     });
   });
+
   describe('DIVIDE', function() {
     it('the result must be 1.5', function() {
       expect(calculateNumber('DIVIDE', 3, 2)).to.equal(1.5);
@@ -57,7 +61,7 @@ describe('calculator', function() {
       expect(calculateNumber('DIVIDE', 0, 2)).to.equal(0);
     });
 
-    it('the result must be Error', function() {
+    it('the result must be "Error"', function() {
       expect(calculateNumber('DIVIDE', 0, 0)).to.equal('Error');
     });
   });
