@@ -1,5 +1,5 @@
-const calculateNumber = require('./2-calcul_chai');
-const expect = Chai.expect;
+import { expect } from 'chai';
+import calculateNumber from './2-calcul_chai.js';
 
 describe('calculator', function() {
   describe('SUM', function() {
@@ -19,7 +19,7 @@ describe('calculator', function() {
       expect(calculateNumber('SUM', 0, 0)).to.equal(0);
     });
   });
-  deacribe('SUBTRACT', function() {
+  describe('SUBTRACT', function() {
     it('the result must be 2', function() {
       expect(calculateNumber('SUBTRACT', 5.6, 3.9)).to.equal(2);
     });
