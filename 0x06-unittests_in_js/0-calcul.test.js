@@ -18,4 +18,7 @@ describe('calculator', function() {
       assert.equal(calculateNumber(0.8, -0.8), 0);
     });
 
+    it('the result must be -2', function() {
+      assert.equal(calculateNumber(-4.3, 2), -2);
+    });
 });
