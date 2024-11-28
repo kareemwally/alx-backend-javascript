@@ -14,5 +14,6 @@ function calculateNumber(TYPE, a, b) {
     }
     return val1 / val2;
   }
+  return 0;
 }
-export default calculateNumber;
+module.exports = calculateNumber;
