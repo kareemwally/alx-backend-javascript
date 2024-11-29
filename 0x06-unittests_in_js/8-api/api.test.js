@@ -1,12 +1,27 @@
-const assert = require('assert');
-const app = require('../api/api.js');
+const request = require('request');
+const { expect } = require('chai');
 
-describe('API', () => {
-  it('should return 200', async () => {
-    const response = await app.inject({
-      method: 'GET',
-      url: '/',
+describe('Index page', () => {
+  const API_URL = 'http://localhost:7865';
+
+  it('should return correct status code', (done) => {
+    request.get(API_URL, (error, response) => {
+      expect(response.statusCode).to.equal(200);
+      done();
     });
-    assert.strictEqual(response.statusCode, 200);
+  });
+
+  it('should return correct result', (done) => {
+    request.get(API_URL, (error, response, body) => {
+      expect(body).to.equal('Welcome to the payment system');
+      done();
+    });
+  });
+
+  it('should return 404 for invalid routes', (done) => {
+    request.get(`${API_URL}/invalid_route`, (error, response) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
   });
 });
