@@ -24,20 +24,43 @@ describe('Index page', () => {
       done();
     });
   });
+});
 
-  it('should return 200 with valid cart id', async () => {
-    const response = await app.inject({
-    method: 'GET',
-    url: '/cart/12',
+describe('Cart page', () => {
+  const API_URL = 'http://localhost:7865';
+
+  it('should return correct status code when :id is a number', (done) => {
+    request.get(`${API_URL}/cart/12`, (error, response) => {
+      expect(response.statusCode).to.equal(200);
+      done();
     });
-  assert.strictEqual(response.statusCode, 200);
   });
 
-  it('should return 404 with invalid cart id', async () => {
-    const response = await app.inject({
-    method: 'GET',
-    url: '/cart/hello',
+  it('should return correct message when :id is a number', (done) => {
+    request.get(`${API_URL}/cart/12`, (error, response, body) => {
+      expect(body).to.equal('Payment methods for cart 12');
+      done();
     });
-  assert.strictEqual(response.statusCode, 404);
+  });
+
+  it('should return 404 when :id is NOT a number', (done) => {
+    request.get(`${API_URL}/cart/hello`, (error, response) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
+  });
+
+  it('should return 404 when :id is a negative number', (done) => {
+    request.get(`${API_URL}/cart/-12`, (error, response) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
+  });
+
+  it('should return 404 when :id contains decimals', (done) => {
+    request.get(`${API_URL}/cart/12.34`, (error, response) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
   });
 });
